@@ -2,7 +2,7 @@
 #include "vulkan/vulkan.hpp"
 #include <GLFW/glfw3.h>
 #include <stdexcept>
-#include <iostream>
+
 namespace vec {
     Window::Window(vk::Offset2D position, vk::Extent2D size, const char* pTitle, const vk::Instance& rInstance) :rInstance(rInstance){
         glfwWindowHint(GLFW_POSITION_X, position.x);

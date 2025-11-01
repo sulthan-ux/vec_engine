@@ -4,7 +4,6 @@
 #include <GLFW/glfw3.h>
 #include <vector>
 #include <stdexcept>
-#include <iostream>
 
 namespace vec{
     Application::Application(const char* pApplicationName, uint32_t applicationVersion, VkBool32 enableValidator){

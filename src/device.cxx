@@ -1,7 +1,7 @@
 #include "device.hxx"
 #include "vulkan/vulkan.hpp"
 #include <stdexcept>
-#include <iostream>
+
 namespace vec{
     GPUDevice::GPUDevice(const vk::Instance& rInstance,  const Window& rWindow) :rInstance(rInstance) {
         enumeratePhysicalDevice(rWindow);
