@@ -5,15 +5,22 @@
 namespace vec{
     class Application{
     public:
-      Application(const char* pApplicationName, uint32_t applicationVersion);
+      Application(const char* pApplicationName, uint32_t applicationVersion, VkBool32 enableValidator);
       ~Application();
 
-    private:
-        vk::Instance instance;
-        vk::DebugUtilsMessengerEXT messenger;
+      void running();
 
-        static constexpr vk::Offset2D position = {0,0};
-        static constexpr vk::Extent2D size = {800, 600};
+    private:
+
+      void createInstance(vk::ApplicationInfo appInfo ,VkBool32 enableValidator);
+      void createDebugMessenger();
+
+      vk::Instance instance;
+      vk::DebugUtilsMessengerEXT messenger;
+
+      const char* pEngineName = "Vulkan Ember Core";
+      uint32_t engineVersion = VK_MAKE_VERSION(1, 0, 0);
+      uint32_t apiVersion = VK_API_VERSION_1_1;
 
     };
 }
