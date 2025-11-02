@@ -1,6 +1,10 @@
+#include "renderer.hxx"
+#include "swapchain.hxx"
 #include "window.hxx"
 #include <application.hxx>
 #include <device.hxx>
+#include <swapchain.hxx>
+#include <renderer.hxx>
 #include <GLFW/glfw3.h>
 #include <vector>
 #include <stdexcept>
@@ -39,11 +43,17 @@ namespace vec{
     void Application::running(){
         Window* window = new Window({0,0},{800, 600}, "Ember Vulkan", this->instance);
         GPUDevice* device = new GPUDevice(this->instance, *window);
+        Swapchain* swapchain = new Swapchain(*window, *device);
+        Renderer* renderer = new Renderer(*device, *swapchain);
 
         while(!window->closeWindow()){
+            renderer->render();
             glfwPollEvents();
         }
 
+        delete renderer;
+        delete swapchain;
+        delete device;
         delete window;
     }
     Application::~Application(){

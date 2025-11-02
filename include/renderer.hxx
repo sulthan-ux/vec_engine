@@ -15,9 +15,6 @@ namespace vec{
         void createSynchronizer();
         void createCommandPool();
 
-        vk::Result acquireImage();
-        vk::Result submit();
-        vk::Result present();
 
         const GPUDevice& rDevice;
         const Swapchain& rSwapchain;
@@ -27,6 +24,9 @@ namespace vec{
         std::vector<vk::Semaphore> renderSignal;
         vk::CommandPool commandPool;
         std::vector<vk::CommandBuffer> commandBuffers;
+
+        uint32_t imageIndex = 0;
+        uint32_t currentFrame = 0;
 
 
     };
