@@ -2,7 +2,6 @@
 #include "vulkan/vulkan.hpp"
 #include <renderer.hxx>
 #include <stdexcept>
-#include <iostream>
 
 namespace vec{
     Renderer::Renderer(const GPUDevice& rDevice, const Swapchain& rSwapchain) :rDevice(rDevice), rSwapchain(rSwapchain){
