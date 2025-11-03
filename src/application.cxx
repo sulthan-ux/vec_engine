@@ -41,10 +41,11 @@ namespace vec{
     }
 
     void Application::running(){
-        Window* window = new Window({0,0},{800, 600}, "Ember Vulkan", this->instance);
+        Window* window = new Window({0,0},{1280, 720}, "Ember Vulkan", this->instance);
         GPUDevice* device = new GPUDevice(this->instance, *window);
         Swapchain* swapchain = new Swapchain(*window, *device);
-        Renderer* renderer = new Renderer(*device, *swapchain);
+        Engine* engine = new Engine(this->instance, *device, *window, *swapchain);
+        Renderer* renderer = new Renderer(*device, *swapchain, engine);
 
         while(!window->closeWindow()){
             renderer->render();

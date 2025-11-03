@@ -1,10 +1,11 @@
 #include "device.hxx"
+#include "engine.hxx"
 #include "vulkan/vulkan.hpp"
 #include <renderer.hxx>
 #include <stdexcept>
 
 namespace vec{
-    Renderer::Renderer(const GPUDevice& rDevice, const Swapchain& rSwapchain) :rDevice(rDevice), rSwapchain(rSwapchain){
+    Renderer::Renderer(const GPUDevice& rDevice, const Swapchain& rSwapchain, Engine* pEngine) :rDevice(rDevice), rSwapchain(rSwapchain) , pEngine(pEngine) {
         createSynchronizer();
         createCommandPool();
     }
@@ -98,15 +99,13 @@ namespace vec{
 
         vk::Rect2D area = {
             {0 ,0},
-            {800, 600}
+            {1280, 720}
         };
+        pEngine->renderNewUI();
 
         std::array<vk::ClearValue, 2> clearValues = {};
-
         clearValues.at(0).setColor({0.3f, 0.3f, 0.3f, 1.0f});
-
         clearValues.at(1).setDepthStencil(1.0f);
-
 
         vk::RenderPassBeginInfo renderPassBeginInfo = {
             rSwapchain.getRenderPass(),
@@ -118,6 +117,7 @@ namespace vec{
 
 
         commandBuffers.at(currentFrame).beginRenderPass(&renderPassBeginInfo, vk::SubpassContents::eInline);
+        pEngine->renderData(commandBuffers.at(currentFrame));
         commandBuffers.at(currentFrame).endRenderPass();
         commandBuffers.at(currentFrame).end();
 

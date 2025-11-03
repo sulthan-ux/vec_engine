@@ -1,4 +1,5 @@
 #pragma once
+#include "engine.hxx"
 #include <swapchain.hxx>
 #include <device.hxx>
 #include <vector>
@@ -6,7 +7,7 @@
 namespace vec{
     class Renderer{
     public:
-        Renderer(const GPUDevice& rDevice, const Swapchain& rSwapchain);
+        Renderer(const GPUDevice& rDevice, const Swapchain& rSwapchain, Engine* pEngine);
         ~Renderer();
 
         vk::Bool32 render();
@@ -18,6 +19,7 @@ namespace vec{
 
         const GPUDevice& rDevice;
         const Swapchain& rSwapchain;
+        Engine* pEngine;
 
         std::vector<vk::Fence> fences;
         std::vector<vk::Semaphore> imageSignal;

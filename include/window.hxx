@@ -11,6 +11,7 @@ namespace vec {
         vk::Bool32 closeWindow();
 
         vk::SurfaceKHR getSurface() const { return this->surface;}
+        GLFWwindow* getWindow() const { return this->window;}
 
         Window(const Window&) = delete;
         Window& operator=(const Window&) = delete;

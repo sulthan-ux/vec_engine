@@ -3,7 +3,6 @@
 #include <cstdint>
 #include <stdexcept>
 #include <set>
-#include <iostream>
 
 namespace vec{
     GPUDevice::GPUDevice(const vk::Instance& rInstance,  const Window& rWindow) :rInstance(rInstance) {
