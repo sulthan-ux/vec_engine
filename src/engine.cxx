@@ -91,11 +91,14 @@ namespace vec{
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        bool show = true;
-        ImGui::ShowDemoWindow(&show);
+        ImGui::SetNextWindowPos(ImVec2(0, 0));
+        ImGui::SetNextWindowSize(ImVec2(250, rSwapchain.getExtent().height));
+        ImGui::Begin("Panel Tetap", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse |
+        ImGuiWindowFlags_NoResize);
+        ImGui::Text("Panel ini tidak bisa digeser!");
+        ImGui::End();
 
         ImGui::Render();
-
 
     }
     void Engine::renderData(vk::CommandBuffer buffer){

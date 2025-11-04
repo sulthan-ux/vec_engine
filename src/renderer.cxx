@@ -99,7 +99,7 @@ namespace vec{
 
         vk::Rect2D area = {
             {0 ,0},
-            {1280, 720}
+            rSwapchain.getExtent()
         };
         pEngine->renderNewUI();
 
@@ -151,6 +151,7 @@ namespace vec{
 
 
         currentFrame = ( currentFrame + 1) % commandBuffers.size();
+
 
         return VK_TRUE;
     }

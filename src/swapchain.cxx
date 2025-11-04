@@ -43,6 +43,7 @@ namespace vec{
         swapchainInfo.setImageExtent(swapchainExtent);
         swapchainInfo.setImageArrayLayers(1);
         swapchainInfo.setImageUsage(vk::ImageUsageFlagBits::eColorAttachment);
+        swapchainInfo.setPresentMode(vk::PresentModeKHR::eFifo);
 
         std::vector<uint32_t> familyIndices = {rDevice.getQueueFamilyIndex(GPUDevice::QueueType::eGraphics), rDevice.getQueueFamilyIndex(GPUDevice::QueueType::ePresent)};
 

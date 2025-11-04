@@ -13,6 +13,7 @@ namespace vec{
         vk::SwapchainKHR getSwapchain() const { return swapchain;}
         vk::RenderPass getRenderPass() const { return renderPass;}
         std::vector<vk::Framebuffer> getFramebuffers() const { return framebuffers;}
+        vk::Extent2D getExtent() const { return swapchainExtent;}
 
         Swapchain(const Swapchain&) = delete;
         Swapchain& operator=(const Swapchain&) = delete;

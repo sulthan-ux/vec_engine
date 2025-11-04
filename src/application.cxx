@@ -8,6 +8,8 @@
 #include <GLFW/glfw3.h>
 #include <vector>
 #include <stdexcept>
+#include <thread>
+#include <chrono>
 
 namespace vec{
     Application::Application(const char* pApplicationName, uint32_t applicationVersion, VkBool32 enableValidator){
@@ -50,6 +52,7 @@ namespace vec{
         while(!window->closeWindow()){
             renderer->render();
             glfwPollEvents();
+            std::this_thread::sleep_for(std::chrono::milliseconds(33));
         }
 
         delete renderer;

@@ -8,6 +8,7 @@ namespace vec {
         glfwWindowHint(GLFW_POSITION_X, position.x);
         glfwWindowHint(GLFW_POSITION_Y, position.y);
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+        glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
         this->window = glfwCreateWindow(size.width, size.height, pTitle, NULL, NULL);
         if(!window){
